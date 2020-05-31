@@ -1,24 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
+import the_seth_logo from './the-seth-logo.png';
 import './App.css';
+import AddStaff from './Components/AddStaff';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="header">
+        <div className="logo-wrapper">
+            <img src={the_seth_logo} alt="logo" className="logo"/>
+        </div>
+      </div>
+      <div className="add-staff-wrapper">
+        <AddStaff />
+      </div>
     </div>
   );
 }
