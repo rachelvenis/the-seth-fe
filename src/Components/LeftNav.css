@@ -1,0 +1,28 @@
+.horizontalLine {
+  background: linear-gradient(90deg, #166936 86%, rgba(22, 105, 54, 0) 100%);
+  height: 1px;
+}
+
+.navContainer {
+  display: flex;
+}
+
+.pageOptionContainer {
+  display: flex;
+  flex-direction: column;
+  width: 140px;
+}
+
+.verticalLine {
+  background: linear-gradient(180deg, #166936 86%, rgba(22, 105, 54, 0) 100%);
+  width: 1px;
+  height: 600px;
+}
+
+.navOptions {
+  display: flex;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px #166936 solid;
+}
