@@ -1,21 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './LeftNav.css';
+import { Link } from "react-router-dom";
 // import AddStaff from './Components/AddStaff';
 
-function LeftNav() {
-  return (
-    <div className="leftnav">
-    	<div className="horizontalLine"></div>
-    	<div className="navContainer">
-    		<div className="pageOptionContainer">
-    			<div className="navOptions">opt 1</div>
-    			<div className="navOptions">opt 2</div>
-    			<div className="navOptions">opt 3</div>
-    		</div>
-    		<div className="verticalLine"></div>
-    	</div>
-    </div>
-  );
+class LeftNav extends Component {
+  render() {
+    return (
+      <div className="leftnav">
+        <div className="horizontalLine"></div>
+        <div className="navContainer">
+          <div className="pageOptionContainer">
+            <Link to="/calender" style={{ textDecoration: 'none', color: 'black' }}>
+              <div
+                className={`navOptions ${this.props.page === "calender" ? 'selected' : null}`}>
+                Calendar
+              </div>
+            </Link>
+            <Link to="/staff" style={{ textDecoration: 'none', color: 'black' }}>
+              <div
+                className={`navOptions ${this.props.page === "staff" ? 'selected' : null}`}>
+                Staff<br />Details
+              </div>
+            </Link>
+            <Link to="/assignment" style={{ textDecoration: 'none', color: 'black' }}>
+              <div
+                className={`navOptions ${this.props.page === "assignment" ? 'selected' : null}`}>
+                New<br />Assignments
+              </div>
+            </Link>
+          </div>
+          <div className="verticalLine"></div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default LeftNav;

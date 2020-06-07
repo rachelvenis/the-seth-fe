@@ -26,9 +26,4 @@
   border-bottom: 1px #166936 solid;
   font-family: 'Julius Sans One', sans-serif;
   line-height: 1.6;
-  cursor: pointer;
-}
-
-.selected {
-  font-weight: bold;
 }
