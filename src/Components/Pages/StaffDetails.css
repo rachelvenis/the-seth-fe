@@ -1,29 +1,9 @@
-.horizontalLine {
-  background: linear-gradient(90deg, #166936 75%, rgba(22, 105, 54, 0) 100%);
-  height: 1px;
-}
-
-.navContainer {
+.astaff {
   display: flex;
+  flex-direction: row;
 }
 
-.pageOptionContainer {
+.staffContainer {
   display: flex;
   flex-direction: column;
-  width: 140px;
-}
-
-.verticalLine {
-  background: linear-gradient(180deg, #166936 75%, rgba(22, 105, 54, 0) 100%);
-  width: 1px;
-  height: 600px;
-}
-
-.navOptions {
-  display: flex;
-  height: 52px;
-  padding-top: 8px;
-  border-bottom: 1px #166936 solid;
-  font-family: 'Julius Sans One', sans-serif;
-  line-height: 1.6;
 }

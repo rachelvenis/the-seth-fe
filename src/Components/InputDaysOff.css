@@ -1,0 +1,21 @@
+.input {
+	margin-right: 20px;
+  	font-family: 'Julius Sans One', sans-serif;
+    width: 220px;
+}
+
+.addStaffButton {
+	width: 476px;
+	margin-top: 10px;
+  	font-family: 'Julius Sans One', sans-serif;
+}
+
+.processButton {
+	width: 476px;
+	margin-top: 10px;
+  	font-family: 'Julius Sans One', sans-serif;
+}
+
+.singleInput {
+	margin-top: 10px;
+}

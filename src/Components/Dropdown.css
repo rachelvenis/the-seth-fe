@@ -1,0 +1,29 @@
+.triangle {
+    height: 24px;
+  	transform: rotate(90deg);
+}
+
+.titleContainer {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+  	font-family: 'Julius Sans One', sans-serif;
+	cursor: pointer;
+}
+
+.title {
+    padding-left: 20px;
+    font-size: 18px;
+}
+
+.open {
+  	transform: rotate(180deg);
+}
+
+.contentContainer {
+    padding-left: 64px;
+}
+
+.dropdownContainer {
+	margin-bottom: 10px;
+}

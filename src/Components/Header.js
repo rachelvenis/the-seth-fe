@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import the_seth_logo from '../the-seth-logo.png';
 // import './Header.css';
-// import AddStaff from './Components/AddStaff';
 
 class Header extends Component {
   render() {
@@ -10,6 +9,7 @@ class Header extends Component {
 	      <div className="logo-wrapper">
 	          <img src={the_seth_logo} alt="logo" className="logo"/>
 	      </div>
+	      <div>{this.props.title}</div>
 	    </div>
 	  );
 	}

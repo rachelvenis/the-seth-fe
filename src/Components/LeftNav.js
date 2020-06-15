@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import './LeftNav.css';
 import { Link } from "react-router-dom";
-// import AddStaff from './Components/AddStaff';
 
 class LeftNav extends Component {
   render() {
     return (
       <div className="leftnav">
-        <div className="horizontalLine"></div>
         <div className="navContainer">
           <div className="pageOptionContainer">
             <Link to="/calender" style={{ textDecoration: 'none', color: 'black' }}>

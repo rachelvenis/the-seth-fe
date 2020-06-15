@@ -13,6 +13,9 @@
   display: flex;
   margin: auto;
   align-items: center;
+  justify-content: space-between;
+  font-family: 'Julius Sans One', sans-serif;
+  font-size: 30px;
 }
 
 .container {
