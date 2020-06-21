@@ -16,13 +16,21 @@ import './App.css';
 
 class App extends Component {
   state = {
-    page: []
+    staff: [],
+    days: []
   };
 
   componentDidMount() {
     axios
       .get('http://localhost:3100/api/staff')
-      .then(res => this.setState({ staff: res.data }));
+      .then(res => {
+        this.setState({ staff: res.data })});
+    axios
+      .get('http://localhost:3100/api/days')
+      .then(res => {
+        this.setState(
+          { staff: this.state.staff, days: res.data })});
+
   }
 
   // Toggle Complete
@@ -64,10 +72,11 @@ class App extends Component {
       <Router>
         <div className="container">
           <Route exact path="/staff">
-            <StaffDetails />
+            <StaffDetails staff={this.state.staff}/>
           </Route>
           <Route exact path="/assignment">
-            <Assignment />
+            <Assignment staff={this.state.staff}
+            days={this.state.days}/>
           </Route>
           <Route exact path="/calender">
             <Calender />

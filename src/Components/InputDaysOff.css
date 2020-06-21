@@ -18,4 +18,9 @@
 
 .singleInput {
 	margin-top: 10px;
+	display: flex;
+}
+
+.red {
+	border-color: red;
 }
