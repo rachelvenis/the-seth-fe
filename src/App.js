@@ -30,7 +30,6 @@ class App extends Component {
       .then(res => {
         this.setState(
           { staff: this.state.staff, days: res.data })});
-
   }
 
   // Toggle Complete
@@ -54,7 +53,7 @@ class App extends Component {
   //   );
   // };
 
-  // // Add Todo
+  // Add Todo
   // addTodo = title => {
   //   axios
   //     .post('https://jsonplaceholder.typicode.com/todos', {

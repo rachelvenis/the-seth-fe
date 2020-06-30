@@ -24,3 +24,8 @@
 .red {
 	border-color: red;
 }
+
+.error {
+	color: red;
+	font-size: 10px;
+}

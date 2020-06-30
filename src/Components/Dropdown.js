@@ -7,6 +7,11 @@ class Dropdown extends Component {
     open: true
   }
 
+  componentDidMount() {
+    this.setState(
+      { open: this.props.open });
+  }
+
   toggleDropdown = () => {
     this.setState({
       open: !this.state.open
