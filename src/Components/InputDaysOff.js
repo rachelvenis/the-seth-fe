@@ -3,6 +3,8 @@ import the_seth_logo from '../the-seth-logo.png';
 import './InputDaysOff.css';
 import axios from 'axios';
 import Autocomplete from 'react-autocomplete';
+import Dropdown from './Dropdown';
+import QuotaResults from './QuotaResults';
 
 function matchName(staff, value) {
   return (
@@ -45,7 +47,7 @@ const SingleInput = (props) => (
   />
   <Autocomplete
     items={props.days.map(s => (
-      {label: "" + s.dayOfCamp, id: s.id}))}
+      {label: s.dayLabel, id: s.id}))}
     getItemValue={ item => item.label }
     renderItem={(item, isHighlighted) =>
       <div style={{ background: isHighlighted ? 'lightgray' : 'white',
@@ -99,6 +101,7 @@ class InputDaysOff extends Component {
         <button className="processButton" onClick={this.props.processAssignment}>
           process
         </button>
+        <QuotaResults quotas={this.props.quotas} cabinQuotas={this.props.cabinQuotas} />
       </div>
     );
   }

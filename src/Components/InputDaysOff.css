@@ -29,3 +29,12 @@
 	color: red;
 	font-size: 10px;
 }
+
+.quotaTitle {
+    display: flex;
+    align-items: center;
+    padding-left: 56px;
+  	font-family: 'Julius Sans One', sans-serif;
+    font-size: 14px;
+    padding-top: 4px;
+}

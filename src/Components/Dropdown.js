@@ -23,8 +23,8 @@ class Dropdown extends Component {
       <div className="dropdownContainer">
         <div className="titleContainer" onClick={this.toggleDropdown}>
           <img src={triangle} alt="triangle"
-            className={`triangle ${this.state.open ? "open" : ""}`}/>
-          <div className={"title"}>{this.props.title}</div>
+            className={`triangle ${this.state.open ? "open" : ""} ${this.props.level}Triangle`}/>
+          <div className={`title ${this.props.level}`}>{this.props.title}</div>
         </div>
         <div className="contentContainer">
           {this.state.open ? this.props.children : null}

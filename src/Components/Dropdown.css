@@ -3,6 +3,18 @@
   	transform: rotate(90deg);
 }
 
+.levelOneTriangle {
+    height: 24px;
+}
+
+.levelTwoTriangle {
+    height: 20px;
+}
+
+.levelThreeTriangle {
+    height: 16px;
+}
+
 .titleContainer {
     display: flex;
     align-items: center;
@@ -14,6 +26,19 @@
 .title {
     padding-left: 20px;
     font-size: 18px;
+}
+
+.levelOne {
+    padding-left: 20px;
+    font-size: 18px;
+}
+
+.levelTwo {
+    font-size: 16px;
+}
+
+.levelThree {
+    font-size: 14px;
 }
 
 .open {

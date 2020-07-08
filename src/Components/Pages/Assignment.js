@@ -17,35 +17,13 @@ function idsToLabels(ids, staff, days) {
     }
     for(let i in days) {
       if (days[i].id == item[1]) {
-        result['date'] = "" + days[i].dayOfCamp;
+        result['date'] = "" + days[i].dayLabel;
       }
     }
     result['errors'] = item[2];
     results.push(result);
   })
   return results;
-}
-
-function download() {
-  axios
-    .get('http://localhost:3100/api/actions/generatePDF')
-    .then(res => {
-      console.log(res.data);
-      const buffer = res.data.blob()
-      var newBlob = new Blob([buffer], {type: "application/pdf"})
-      // const blob = new Blob([buffer]);
-
-      const data = window.URL.createObjectURL(newBlob);
-      var link = document.createElement('a');
-      link.href = data;
-      link.download="file.pdf";
-      link.click();
-      setTimeout(function(){
-        // For Firefox it is necessary to delay revoking the ObjectURL
-        window.URL.revokeObjectURL(data);
-      }, 100);
-      // this.setState({ ods: odIdsToLabels(res.data.assignments, this.props.staff, this.props.days) })
-    });
 }
 
 function odIdsToLabels(ids, staff, days) {
@@ -61,7 +39,7 @@ function odIdsToLabels(ids, staff, days) {
       }
       for(let i in days) {
         if (days[i].id == item[1]) {
-          result['date'] = "" + days[i].dayOfCamp;
+          result['date'] = days[i].dayLabel;
         }
       }
       result['halfUnit'] = item[2];
@@ -84,7 +62,7 @@ function prepareToValidate(inputs, staff, days) {
       }
     }
     for(const day in days) {
-      if (inputs[i].date == days[day].dayOfCamp) {
+      if (inputs[i].date == days[day].dayLabel) {
         result['dayId'] = days[day].id;
       }
     }
@@ -98,7 +76,9 @@ class Assignment extends Component {
     inputs: [
       {id: 0, name: "", date: "", errors: []}
     ],
-    ods: []
+    ods: [],
+    quotas: {},
+    cabinQuotas: {}
   };
 
   getODStartAndEnd = () => {
@@ -137,7 +117,8 @@ class Assignment extends Component {
       .post('http://localhost:3100/api/actions/validateDO',
         prepareToValidate(this.state.inputs, this.props.staff, this.props.days))
       .then(res => {
-        this.setState({ inputs: idsToLabels(res.data.assignments, this.props.staff, this.props.days) })
+        this.setState({ inputs: idsToLabels(res.data.assignments, this.props.staff, this.props.days),
+          quotas: res.data.quotas, cabinQuotas: res.data.cabinQuotas })
       });
   };
 
@@ -200,10 +181,12 @@ class Assignment extends Component {
         		<Dropdown
         			title={"Step 1: input days off"}
               open={true}>
-              {/*TODO stop state of assignment inputs from being dumped*/}
-        			<InputDaysOff staff={this.props.staff}
+        			<InputDaysOff
+              staff={this.props.staff}
               days={this.props.days}
               inputs={this.state.inputs}
+              quotas={this.state.quotas}
+              cabinQuotas={this.state.cabinQuotas}
               addNewAssignment={this.addNewAssignment}
               processAssignment={this.processAssignment}
               nameChange={this.nameChange}
@@ -219,7 +202,7 @@ class Assignment extends Component {
               <div>
                 {Object.entries(this.state.ods).map(([k,v]) => (
                   <div>
-                    <Dropdown className="ODdayHeader" title={k}>
+                    <Dropdown className="ODdayHeader" title={k} level="levelTwo">
                       {v.map(i => <div>{i.name}|{i.halfUnit}</div>)}
                     </Dropdown>
                   </div>))}
