@@ -29,3 +29,15 @@
 .formatButton:hover {
 	background: rgb(228, 228, 228);
 }
+
+.ODDayContent {
+	display: flex;
+	flex-direction: column;
+}
+
+.ODSingleDay {
+    font-size: 13px;
+	display: flex;
+    width: 350px;
+    justify-content: space-between;
+}

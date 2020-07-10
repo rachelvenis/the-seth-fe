@@ -28,7 +28,9 @@ function idsToLabels(ids, staff, days) {
 
 function odIdsToLabels(ids, staff, days) {
   let results = {};
+  console.log(ids);
   for (let day in ids) {
+    console.log(day);
     let newDay = [];
     ids[day].forEach(item => {
       let result = {id: results.length, processed: true};
@@ -37,17 +39,18 @@ function odIdsToLabels(ids, staff, days) {
           result['name'] = "" + staff[i].firstName + " " + staff[i].lastName;
         }
       }
-      for(let i in days) {
-        if (days[i].id == item[1]) {
-          result['date'] = days[i].dayLabel;
-        }
-      }
       result['halfUnit'] = item[2];
       result['errors'] = item[3];
       newDay.push(result);
     })
-    results[day] = newDay;
+    for(let i in days) {
+      if (days[i].id == day) {
+        results[days[i].dayLabel] = newDay;
+        break;
+      }
+    }
   }
+  console.log(results);
   return results;
 }
 
@@ -86,10 +89,18 @@ class Assignment extends Component {
     let min = 100;
     let max = 0;
     for(let i = 0; i < this.state.inputs.length; i++) {
-      min = Math.min(min, parseInt(this.state.inputs[i].date));
+      for(const day in this.props.days) {
+        if (this.state.inputs[i].date == this.props.days[day].dayLabel) {
+          min = Math.min(min, this.props.days[day].id);
+        }
+      }
     }
     for(let i = 0; i < this.state.inputs.length; i++) {
-      max = Math.max(max, parseInt(this.state.inputs[i].date));
+      for(const day in this.props.days) {
+        if (this.state.inputs[i].date == this.props.days[day].dayLabel) {
+          max = Math.max(max, this.props.days[day].id);
+        }
+      }
     }
     result.start = min;
     result.end = max;
@@ -203,7 +214,13 @@ class Assignment extends Component {
                 {Object.entries(this.state.ods).map(([k,v]) => (
                   <div>
                     <Dropdown className="ODdayHeader" title={k} level="levelTwo">
-                      {v.map(i => <div>{i.name}|{i.halfUnit}</div>)}
+                      <div className="ODDayContent">
+                        {v.map(i =>
+                          <div className="ODSingleDay">
+                            <div className="ODDayName">{i.name}</div>
+                            <div className="ODDayUnit">{i.halfUnit}</div>
+                          </div>)}
+                      </div>
                     </Dropdown>
                   </div>))}
               </div>
