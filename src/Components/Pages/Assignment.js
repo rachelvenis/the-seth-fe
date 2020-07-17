@@ -28,9 +28,7 @@ function idsToLabels(ids, staff, days) {
 
 function odIdsToLabels(ids, staff, days) {
   let results = {};
-  console.log(ids);
   for (let day in ids) {
-    console.log(day);
     let newDay = [];
     ids[day].forEach(item => {
       let result = {id: results.length, processed: true};
@@ -50,7 +48,37 @@ function odIdsToLabels(ids, staff, days) {
       }
     }
   }
-  console.log(results);
+  return results;
+}
+function odIdsToLabelsForInit(ids, staff, days) {
+  let results_rough = {};
+  let results = {};
+  for (let day in ids) {
+    let single_result = {id: day, processed: true};
+    for(let i in staff) {
+      if (staff[i].id == ids[day][0]) {
+        single_result['name'] = "" + staff[i].firstName + " " + staff[i].lastName;
+      }
+    }
+    single_result['halfUnit'] = ids[day][2];
+    single_result['errors'] = ids[day][3];
+    let prev_results = results_rough[ids[day][1]];
+    if (prev_results == null) {
+        prev_results = [];
+    }
+    prev_results.push(single_result);
+    results_rough[ids[day][1]] = prev_results;
+
+    // replace day ids with labels
+    Object.entries(results_rough).map(([k,v]) => {
+      for(let i in days) {
+        if (k == days[i].id) {
+          results[days[i].dayLabel] = v;
+          break;
+        }
+      }
+    });
+  }
   return results;
 }
 
@@ -83,6 +111,20 @@ class Assignment extends Component {
     quotas: {},
     cabinQuotas: {}
   };
+
+  componentDidUpdate(prevProps) {
+    if (this.props.staff !== prevProps.staff || this.props.days !== prevProps.days) {
+      axios
+        .get('http://localhost:3100/api/assignments/draftDO')
+        .then(res => {
+          this.setState({ inputs: idsToLabels(res.data, this.props.staff, this.props.days)})});   
+      axios
+        .get('http://localhost:3100/api/assignments/draftOD')
+        .then(res => {
+          this.setState({ ods: odIdsToLabelsForInit(res.data, this.props.staff, this.props.days) })
+        });
+    }
+  }
 
   getODStartAndEnd = () => {
     let result = {};
