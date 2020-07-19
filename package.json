@@ -7,13 +7,16 @@
     "blob-stream": "^0.1.3",
     "browserify": "^16.5.1",
     "fs": "0.0.1-security",
+    "match-sorter": "^4.2.0",
     "pdfkit": "^0.11.0",
     "react": "^16.8.6",
     "react-autocomplete": "^1.8.1",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
+    "react-table": "^7.3.0",
     "redux": "^4.0.5",
+    "styled-components": "^5.1.1",
     "webfontloader": "^1.6.28"
   },
   "scripts": {
