@@ -9,9 +9,10 @@
 
 .header {
   height: 100px;
-  width: 100%;
+  width: 90%;
   display: flex;
   margin: auto;
+  margin-left: 0;
   align-items: center;
   justify-content: space-between;
   font-family: 'Julius Sans One', sans-serif;
@@ -23,6 +24,6 @@
   flex-direction: column;
   align-content: center;
   justify-content: center;
-  width: 1000px;
+  width: 1600px;
   margin: auto;
 }

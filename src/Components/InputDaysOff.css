@@ -38,3 +38,8 @@
     font-size: 14px;
     padding-top: 4px;
 }
+
+.contentContainerContainer {
+	display: flex;
+    flex-direction: column;
+}

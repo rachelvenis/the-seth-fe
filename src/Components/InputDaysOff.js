@@ -42,7 +42,8 @@ const SingleInput = (props) => (
         margin: '0px 8px 0px 0px',
         width: '226px',
         border: '1px solid ' +
-          (props.processed ? (props.errors.length > 0 ? 'red' : 'green') : 'grey')},
+          (props.processed ? ((props.errors.length > 0 && props.errors[0] != null) ?
+            'red' : 'green') : 'grey')},
       placeholder: 'Staff Name' }}
   />
   <Autocomplete
@@ -66,7 +67,8 @@ const SingleInput = (props) => (
         margin: '0px 8px 0px 0px',
         width: '226px',
         border: '1px solid ' +
-          (props.processed ? (props.errors.length > 0 ? 'red' : 'green') : 'grey')},
+          (props.processed ? ((props.errors.length > 0 && props.errors[0] != null) ?
+            'red' : 'green') : 'grey')},
       placeholder: 'Date' }}
   />
   <div>
