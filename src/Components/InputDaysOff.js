@@ -80,7 +80,7 @@ const SingleInput = (props) => (
 class InputDaysOff extends Component {
   render() {
     return (
-      <div className="no">
+      <div className="contentContainerContainer">
         {this.props.inputs.map(i => 
             (<SingleInput
             name={i.name}
